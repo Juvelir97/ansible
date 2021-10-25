@@ -1,0 +1,14 @@
+---
+- name: Change line in hosts file
+  hosts: ubuntu_gr
+  become: yes
+
+  tasks:
+  - name: Replace a localhost
+    ansible.builtin.lineinfile:
+      path: /etc/hosts
+      regexp: '^127.0.0.1' 
+      line: 127.0.0.1   localhost
+      owner: root
+      group: root
+      mode: '0644'
